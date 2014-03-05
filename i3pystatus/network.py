@@ -5,13 +5,13 @@ import subprocess
 import netifaces
 
 from i3pystatus import IntervalModule
-
+import i3pystatus.settings as s
 # Remainder: if we raise minimum Python version to 3.3, use ipaddress module
 
 
 def count_bits(integer):
     bits = 0
-    while(integer):
+    while (integer):
         integer &= integer - 1
         bits += 1
     return bits
@@ -47,7 +47,6 @@ def cidr4(addr, mask):
 
 
 class Network(IntervalModule):
-
     """
     Display network information about a interface.
 
@@ -79,8 +78,8 @@ class Network(IntervalModule):
     name = interface = "eth0"
     format_up = "{interface}: {v4}"
     format_down = "{interface}"
-    color_up = "#00FF00"
-    color_down = "#FF0000"
+    color_up = s.green
+    color_down = s.red
     detached_down = False
 
     def init(self):

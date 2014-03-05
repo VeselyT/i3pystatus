@@ -2,10 +2,10 @@ import re
 import glob
 
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class Temperature(IntervalModule):
-
     """
     Shows CPU temperature of Intel processors
 
@@ -19,9 +19,9 @@ class Temperature(IntervalModule):
     )
     format = "{temp} °C"
     high_factor = 0.7
-    color = "#FFFFFF"
-    color_high = "#FFFF00"
-    color_critical = "#FF0000"
+    color = s.grey
+    color_high = s.yellow
+    color_critical = s.red
 
     def init(self):
         self.base_path = "/sys/devices/platform/coretemp.0"

@@ -9,10 +9,10 @@ import xml.etree.ElementTree as ET
 import webbrowser
 
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class ModsDeChecker(IntervalModule):
-
     """
     This class returns i3status parsable output of the number of
     unread posts in any bookmark in the mods.de forums.
@@ -26,7 +26,7 @@ class ModsDeChecker(IntervalModule):
     )
     required = ("username", "password")
 
-    color = "#7181fe"
+    color = s.blue
     offset = 0
     format = "{unread} new posts in bookmarks"
 

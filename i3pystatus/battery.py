@@ -7,6 +7,7 @@ import configparser
 from i3pystatus import IntervalModule, formatp
 from i3pystatus.core.util import lchop, TimeWrapper
 from i3pystatus.core.desktop import DesktopNotification
+import i3pystatus.settings as s
 
 
 class UEventParser(configparser.ConfigParser):
@@ -67,7 +68,8 @@ class BatteryCharge(Battery):
             # Ah / A = h * 60 min = min
             return self.battery_info["CHARGE_NOW"] / self.battery_info["CURRENT_NOW"] * 60
         else:
-            return (self.battery_info["CHARGE_FULL"] - self.battery_info["CHARGE_NOW"]) / self.battery_info["CURRENT_NOW"] * 60
+            return (self.battery_info["CHARGE_FULL"] - self.battery_info["CHARGE_NOW"]) / self.battery_info[
+                "CURRENT_NOW"] * 60
 
 
 class BatteryEnergy(Battery):
@@ -82,7 +84,8 @@ class BatteryEnergy(Battery):
             # Wh / W = h * 60 min = min
             return self.battery_info["ENERGY_NOW"] / self.battery_info["POWER_NOW"] * 60
         else:
-            return (self.battery_info["ENERGY_FULL"] - self.battery_info["ENERGY_NOW"]) / self.battery_info["POWER_NOW"] * 60
+            return (self.battery_info["ENERGY_FULL"] - self.battery_info["ENERGY_NOW"]) / self.battery_info[
+                "POWER_NOW"] * 60
 
 
 class BatteryChecker(IntervalModule):
@@ -132,7 +135,7 @@ class BatteryChecker(IntervalModule):
 
     def run(self):
         urgent = False
-        color = "#ffffff"
+        color = s.grey
 
         battery = Battery.create(self.path)
 
@@ -152,7 +155,7 @@ class BatteryChecker(IntervalModule):
                 fdict["status"] = "DIS"
                 if battery.percentage() <= self.alert_percentage:
                     urgent = True
-                    color = "#ff0000"
+                    color = s.red
             else:
                 fdict["status"] = "CHR"
         else:

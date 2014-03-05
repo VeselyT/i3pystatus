@@ -2,10 +2,10 @@ import os
 
 from i3pystatus import IntervalModule
 from .core.util import round_dict
+import i3pystatus.settings as s
 
 
 class Disk(IntervalModule):
-
     """
     Gets `{used}`, `{free}`, `{available}` and `{total}` amount of bytes on the given mounted filesystem.
 
@@ -18,7 +18,7 @@ class Disk(IntervalModule):
         ("divisor", "divide all byte values by this value, commonly 1024**3 (gigabyte)"),
     )
     required = ("path",)
-    color = "#FFFFFF"
+    color = s.grey
     format = "{free}/{avail}"
     divisor = 1024 ** 3
 

@@ -7,9 +7,10 @@ import datetime
 
 from i3pystatus import IntervalModule
 
+import i3pystatus.settings as s
+
 
 class Clock(IntervalModule):
-
     """
     This class shows a clock
     """
@@ -37,5 +38,5 @@ class Clock(IntervalModule):
         self.output = {
             "full_text": datetime.datetime.now().strftime(self.format),
             "urgent": False,
-            "color": "#ffffff"
+            "color": s.grey
         }

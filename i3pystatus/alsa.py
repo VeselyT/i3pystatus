@@ -1,10 +1,10 @@
 from alsaaudio import Mixer, ALSAAudioError
 
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class ALSA(IntervalModule):
-
     """
     Shows volume of ALSA mixer. You can also use this for inputs, btw.
 
@@ -32,8 +32,8 @@ class ALSA(IntervalModule):
 
     muted = "M"
     unmuted = ""
-    color_muted = "#AAAAAA"
-    color = "#FFFFFF"
+    color_muted = s.dark_grey
+    color = s.grey
     format = "♪: {volume}"
     mixer = "Master"
     mixer_id = 0

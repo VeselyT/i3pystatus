@@ -2,10 +2,10 @@ import glob
 import os.path
 
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class RunWatch(IntervalModule):
-
     """
     Expands the given path using glob to a pidfile and checks
     if the process ID found inside is valid
@@ -18,8 +18,8 @@ class RunWatch(IntervalModule):
 
     format_up = "{name}"
     format_down = "{name}"
-    color_up = "#00FF00"
-    color_down = "#FF0000"
+    color_up = s.green
+    color_down = s.red
     settings = (
         "format_up", "format_down",
         "color_up", "color_down",

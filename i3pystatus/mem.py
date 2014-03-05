@@ -1,5 +1,6 @@
 from i3pystatus import IntervalModule
 from psutil import virtual_memory
+import i3pystatus.settings as s
 
 
 class Mem(IntervalModule):
@@ -18,9 +19,9 @@ class Mem(IntervalModule):
 
     format = "{avail_mem} MiB"
     divisor = 1024 ** 2
-    color = "#00FF00"
-    warn_color = "#FFFF00"
-    alert_color = "#FF0000"
+    color = s.green
+    warn_color = s.yellow
+    alert_color = s.red
     warn_percentage = 50
     alert_percentage = 80
     _round = 2
@@ -28,14 +29,14 @@ class Mem(IntervalModule):
     settings = (
         ("format", "format string used for output."),
         ("divisor",
-            "divide all byte values by this value, default 1024**2(mebibytes"),
+         "divide all byte values by this value, default 1024**2(mebibytes"),
         ("warn_percentage", "minimal percentage for warn state"),
         ("alert_percentage", "minimal percentage for alert state"),
         ("color", "standard color"),
         ("warn_color",
-            "defines the color used wann warn percentage ist exceeded"),
+         "defines the color used wann warn percentage ist exceeded"),
         ("alert_color",
-            "defines the color used when alert percentage is exceeded"),
+         "defines the color used when alert percentage is exceeded"),
         ("round", "round byte values to given length behind dot")
     )
 
@@ -58,5 +59,5 @@ class Mem(IntervalModule):
                                 self._round),
                 total_mem=round(memory_usage.total / self.divisor, self._round),
                 percent_used_mem=int(memory_usage.percent)),
-            "color":color
+            "color": color
         }

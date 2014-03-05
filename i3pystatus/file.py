@@ -1,10 +1,10 @@
 from os.path import join
 
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class File(IntervalModule):
-
     """
     Rip information from text files
 
@@ -34,7 +34,7 @@ class File(IntervalModule):
     required = ("format", "components")
     base_path = "/"
     transforms = {}
-    color = "#FFFFFF"
+    color = s.grey
 
     def run(self):
         cdict = {}

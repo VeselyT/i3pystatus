@@ -1,9 +1,8 @@
-
 from i3pystatus import SettingsBase, IntervalModule
+import i3pystatus.settings as s
 
 
 class Backend(SettingsBase):
-
     """Handles the details of checking for mail"""
 
     unread = 0
@@ -13,7 +12,6 @@ class Backend(SettingsBase):
 
 
 class Mail(IntervalModule):
-
     """
     Generic mail checker
 
@@ -29,8 +27,8 @@ class Mail(IntervalModule):
     )
     required = ("backends",)
 
-    color = "#ffffff"
-    color_unread = "#ff0000"
+    color = s.grey
+    color_unread = s.red
     format = "{unread} new email"
     format_plural = "{unread} new emails"
     hide_if_null = True

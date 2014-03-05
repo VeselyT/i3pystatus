@@ -1,8 +1,8 @@
 from i3pystatus import IntervalModule
+import i3pystatus.settings as s
 
 
 class Load(IntervalModule):
-
     """
     Shows system load
     """
@@ -21,4 +21,5 @@ class Load(IntervalModule):
 
         self.output = {
             "full_text": self.format.format(avg1=avg1, avg5=avg5, avg15=avg15, tasks=tasks),
+            "color": s.grey,
         }
